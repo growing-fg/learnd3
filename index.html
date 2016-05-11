@@ -78,35 +78,20 @@
                 .append('rect')
                 .attr('x', 0)
                 .attr('y', function(d, i) { return i * rh})
-                .attr('width', function (d, i) { return linear(d)})
                 .attr('height', rh - 2)
-                .attr('fill', 'steelblue');
+                .attr('width', 0)
+                .attr('fill', 'steelblue')
+                .transition()
+                    .duration(2000)
+                    .delay(function(d, i) {return i * 200})
+                    .ease('bounce')
+                    .attr('width', function (d, i) { return linear(d)})
 
         // 生成坐标轴
         svg.append('g')
             .attr('class', 'axis')
             .attr('transform', 'translate(0, ' + (data.length * rh + 5) + ')')
             .call(axis);
-
-
-
-/////////////////////////////////////////////////////////////////////////
-
-        svg = d3.select('body')
-                .insert('svg', '#datetime')
-                .attr({width: 500, height: 400});
-
-        svg.selectAll('g')
-            .data(data)
-            .enter()
-                .append('g')
-                .attr('transform', function (d, i) { return 'translate(' + 5 + ',' + i * rh + ')'})
-                    .append('rect')
-                    .attr('width', function (d) {return d}) // 绑定数据的元素的子元素依然可以使用绑定的数据
-                    .attr('height', rh - 2)
-
-
-
 
 
 
