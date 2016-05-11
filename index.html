@@ -90,8 +90,20 @@
 
 
 
+/////////////////////////////////////////////////////////////////////////
 
+        svg = d3.select('body')
+                .insert('svg', '#datetime')
+                .attr({width: 500, height: 400});
 
+        svg.selectAll('g')
+            .data(data)
+            .enter()
+                .append('g')
+                .attr('transform', function (d, i) { return 'translate(' + 5 + ',' + i * rh + ')'})
+                    .append('rect')
+                    .attr('width', function (d) {return d}) // 绑定数据的元素的子元素依然可以使用绑定的数据
+                    .attr('height', rh - 2)
 
 
 
