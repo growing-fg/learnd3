@@ -40,7 +40,12 @@
         });
 
         /////////////////////////////////////////////////////////////////
-        data = [200, 315, 382, 120, 252];
+        data = [20, 35, 32, 12, 22];
+
+        var linear = d3.scale.linear()
+                    .domain([d3.min(data), d3.max(data)])
+                    .range([10, 480]);
+
         var rh = 30;
         var svg = d3.select('body')
                 .insert('svg', '#datetime')
@@ -53,9 +58,13 @@
                 .append('rect')
                 .attr('x', 0)
                 .attr('y', function(d, i) { return i * rh})
-                .attr('width', function (d, i) { return d})
+                .attr('width', function (d, i) { return linear(d)})
                 .attr('height', rh - 2)
                 .attr('fill', 'steelblue');
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        d3.select('body').append('h5').text('~~end/////////////////////////////');
     </script>
 </body>
 </html>
