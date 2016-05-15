@@ -305,12 +305,20 @@
         }
 
         // 加载数据
-        d3.json('city.json', function(err, data) {
+        d3.json('city2.json', function(err, data) {
             if (err) console.log(err);
             else paintCluster(data);
         })
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    </script>
+    <script src="layouts/pack.js"></script>
+
+
+
+    <!-- ---------------------------------------------------------------------- -->
+    <script>
         d3.select('body').append('h5').text('~~end/////////////////////////////');
     </script>
 </body>
