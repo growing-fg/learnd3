@@ -49,7 +49,7 @@
 
     }
 
-    d3.json('city2.json', function (err, data) {
+    d3.json('datas/city2.json', function (err, data) {
         if (err) console.log(err);
         else paint(data);
     });
