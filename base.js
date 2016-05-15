@@ -4,6 +4,12 @@ function makeCanvas(name, transCenter) {
             .append('svg')
             .attr('class', 'canvas')
             .attr({width: cw, height: ch});
+
+    var canvas = svg.append('g');
+    if (transCenter) {
+        canvas.attr('transform', 'translate(' + cw / 2 + ',' + ch / 2 + ')');
+    }
+
     svg.append('text')
         .attr('class', 'canvas-legend')
         .attr('alignment-baseline', 'before-edge')
@@ -11,9 +17,5 @@ function makeCanvas(name, transCenter) {
         .attr('dy', 10)
         .text(name);
 
-    var canvas = svg.append('g');
-    if (transCenter) {
-        canvas.attr('transform', 'translate(' + cw / 2 + ',' + ch / 2 + ')');
-    }
     return canvas;
 }
